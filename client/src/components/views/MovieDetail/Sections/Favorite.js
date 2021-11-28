@@ -20,7 +20,6 @@ export default function Favorite(props) {
 
         Axios.post("/api/favorite/favoriteNumber",variables)
             .then(response => {
-                console.log(response.data)
 
                 if(response.data.success){
                     setFavoriteNumber(response.data.favoriteNumber)
@@ -31,7 +30,6 @@ export default function Favorite(props) {
 
         Axios.post("/api/favorite/favorited",variables)
         .then(response => {
-            console.log(response.data)
 
             if(response.data.success){
                 setFavorited(response.data.favorited)
