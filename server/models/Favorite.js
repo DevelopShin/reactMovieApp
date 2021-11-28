@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+
 const favoriteSchema = mongoose.Schema({
       userFrom: {
-            type: Schema.types.ObjectId,
+            type: Schema.Types.ObjectId,
+            
             ref:"User"
       },
       movieId: {
@@ -18,7 +20,6 @@ const favoriteSchema = mongoose.Schema({
       movieRunTime: {
             type:String
       }
-
 
 }, {timestamps: true})
 
