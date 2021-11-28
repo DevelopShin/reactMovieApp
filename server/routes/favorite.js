@@ -6,7 +6,7 @@ const {Favorite} =require("../models/Favorite")
 //             User
 //=================================
 
-router.post('/FavoriteNumber', (req, res)=>{
+router.post('/favoriteNumber', (req, res)=>{
     const movieId = req.body.movieId
 
     // DB에서 죻아요 숫자 가져오기
@@ -20,7 +20,57 @@ router.post('/FavoriteNumber', (req, res)=>{
 
 })
 
+router.post('/favorited', (req, res)=>{
+    const movieId = req.body.movieId
+    const userFrom = req.body.userFrom
 
 
+    // DB에서 죻아요 숫자 가져오기
+    Favorite.find({"movieId": movieId, "userFrom":userFrom})
+        .exec((err, info) => {
+            if (err) return res.status(400).send(err)
+
+            let result = false;
+            if (info.length != 0){
+                result = true
+            }
+
+            res.status(200).json({success:true, favorited: result})
+
+        })
+
+})
+
+
+router.post('/removeOrAdd', (req, res)=>{
+    const movieId = req.body.movieId
+    const userFrom = req.body.userFrom
+
+    // DB에서 죻아요 숫자 가져오기
+    Favorite.find({"movieId": movieId, "userFrom":userFrom})
+        .exec((err, info) => {
+            if (err) return res.status(400).send(err)
+
+            if (info.length == 0){ //좋아요 추가
+                const favorit = new Favorite(req.body)
+                favorit.save((err, doc)=>{
+                    if (err) {
+                        return res.status(400).send(err)
+                    }
+                    return res.status(200).json({success:true,successType:true})
+                    
+                })
+
+            } else{ //좋아요 취소
+                Favorite.findOneAndDelete({movieId: movieId, userFrom:userFrom})
+                    .exec((err, doc)=>{
+                        if(err) return res.status(400).send(err)
+                        return res.status(200).json({success:true, successType:false})
+
+                    })
+            }
+        })
+
+})
 
 module.exports = router;
