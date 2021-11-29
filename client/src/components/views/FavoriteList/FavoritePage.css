@@ -1,0 +1,16 @@
+table {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  border-color: beige;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid rgb(226, 222, 215);
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: rgb(226, 225, 218);
+}
