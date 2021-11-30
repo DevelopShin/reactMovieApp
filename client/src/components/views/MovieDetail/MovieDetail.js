@@ -3,6 +3,7 @@ import { MOVIE_URL, API_KEY, IMAGE_BASE_URL } from '../../Config';
 import MainImage from '../LandingPage/Sections/MainImage';
 import MovieInfo from './Sections/MovieInfo';
 import Favorite from './Sections/Favorite';
+import ChatCom from './Sections/comment/Comment';
 function MovieDetail(props) {
     const [Movie, setMovie] = useState([])
     const movieId = props.match.params.movieId
@@ -18,7 +19,7 @@ function MovieDetail(props) {
     }, [])
 
     return (
-        <div style={{ width: '100%', margin: '1rem auto' }}>
+        <div style={{ width: '100%', margin: '0 auto' }}>
             {/* header  Main Iamge part*/}
 
             {Movie.backdrop_path && <MainImage image={`${IMAGE_BASE_URL}w1280${Movie.backdrop_path}`}
@@ -27,9 +28,9 @@ function MovieDetail(props) {
             />}
 
             {/* body*/}
-            <div style={{ width: '100%', margin: '1rem, auto' }}>
+            <div style={{ maxWidth: '1268px', margin: '1rem auto', padding:'0.5rem'}}>
                 {/* movie Favorite */}
-                <div style={{ display: "flex", justifyContent: "flex-end", margin: "2rem 1rem 0 0" }}>
+                <div style={{ width:'100%', display:'flex', justifyContent: 'right', margin: "0 0 auto"}}>
                     <Favorite movieInfo={Movie} movieId={movieId} userFrom={localStorage.getItem('userId')}/>
 
                 </div>
@@ -39,6 +40,9 @@ function MovieDetail(props) {
                 <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem auto', width: '100%' }}>
 
                     <MovieInfo movie={Movie} />
+                </div>
+                <div>
+                <ChatCom />
                 </div>
             </div>
 

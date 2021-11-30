@@ -6,7 +6,7 @@ import { Descriptions } from 'antd'
 export default function MovieInfo(props) {
       const {movie} = props;
       return (
-            <div style={{width:"1300px", padding:'1rem'}}>
+            <div style={{width:"1268px"}}>
             <Descriptions title="Movie Info" bordered>
                   <Descriptions.Item label="Title">{movie.original_title}</Descriptions.Item>
                   <Descriptions.Item label="release_date">{movie.release_date}</Descriptions.Item>

@@ -11,7 +11,7 @@ function CommentBoard(props) {
     // const Comment = props.comment
 
     return (
-        <div>
+        <div style={{margin:'0.5rem'}}>
             <Comment
                 author={<a>Han Solo</a>}
                 avatar={<Avatar src="https://picsum.photos/200/200" alt="Han Solo" />}
