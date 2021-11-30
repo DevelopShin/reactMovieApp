@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { MOVIE_URL, API_KEY, IMAGE_BASE_URL } from '../../Config';
 import MainImage from '../LandingPage/Sections/MainImage';
-import MovieInfo from './MovieInfo';
+import MovieInfo from './Sections/MovieInfo';
 import Favorite from './Sections/Favorite';
 function MovieDetail(props) {
     const [Movie, setMovie] = useState([])

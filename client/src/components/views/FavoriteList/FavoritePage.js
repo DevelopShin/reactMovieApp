@@ -3,6 +3,7 @@ import Axios from 'axios'
 import "./FavoritePage.css"
 import { Popover } from 'antd';
 import { MOVIE_URL, IMAGE_BASE_URL } from '../../Config';
+
 function FavoritePage() {
     const userFrom = localStorage.getItem('userId')
     const [MyFavoriteList, setMyFavoriteList] = useState([])
@@ -29,6 +30,7 @@ function FavoritePage() {
                 if (res.data.success) {
                     // const list = res.data.favoriteData
                     setMyFavoriteList(res.data.favoriteData)
+                    console.log(res.data.favoriteData)
 
                     // list.map((favorites, index) => {
                     //     const moviId = favorites.movieId
