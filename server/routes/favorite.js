@@ -3,7 +3,7 @@ const router = express.Router();
 const { Favorite } = require("../models/Favorite")
 
 //=================================
-//             User
+//             Comment
 //=================================
 
 router.post('/favoriteNumber', (req, res) => {

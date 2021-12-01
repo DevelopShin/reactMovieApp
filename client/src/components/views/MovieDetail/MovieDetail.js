@@ -42,7 +42,7 @@ function MovieDetail(props) {
                     <MovieInfo movie={Movie} />
                 </div>
                 <div>
-                <ChatCom />
+                <ChatCom movieId = {movieId}/>
                 </div>
             </div>
 

@@ -1,5 +1,3 @@
-
-
 import React, { createElement, useState, useEffect } from 'react';
 import { Comment, Tooltip, Avatar, Form, Button, Input } from 'antd';
 import Axios from 'axios'
@@ -11,12 +9,12 @@ function SingleComment(props) {
     const [OpenReply, setOpenReply] = useState(false)
     const [Text, setText] = useState('')
     const [TextList, setTextList] = useState([])
-    
+
     const variable = {
         text: Text,
         userFrom: localStorage.getItem('userId'),
         movieId: props.comment.movieId,
-        responseTo:props.comment.responseTo
+        responseTo: props.comment.responseTo
     }
 
     const onSubmitHandler = (e) => {
@@ -28,7 +26,7 @@ function SingleComment(props) {
                 .then(res => {
                     if (res.data.success) {
                         console.log(res.data.result)
-                        // fetchComment()
+                        props.fetchComment()
                         setText('')
 
                     } else {
@@ -43,7 +41,7 @@ function SingleComment(props) {
             setText('')
         }
     }
-    
+
 
 
     const onClickReplyOpen = () => {
@@ -51,40 +49,32 @@ function SingleComment(props) {
     }
 
     const actions = [
-        <span onClick={onClickReplyOpen} key="comment-basic-reply-to" style={{margin:"0", padding:'0'}}>Replay</span>
+        <span onClick={onClickReplyOpen} key="comment-basic-reply-to" style={{ margin: "0", padding: '0' }}>Replay</span>
     ]
 
-const onChangeHandler = (e) => {
-    setText(e.target.value)
-}
+    const onChangeHandler = (e) => {
+        setText(e.target.value)
+    }
 
     return (
         <div>
-            <Comment
-                author={<a>음</a>}
-                action={actions}
+            <Comment 
+                author={<p>{props.comment.name}</p>}
+                actions={actions}
                 avatar={<Avatar src="https://picsum.photos/200/200"/>}
-                content={
-                    <div>
-                        <p>
-                            dsd
-                            {/* {props.comment.text} */}
-                        </p>
-                        {/* <LikeDisLike/> */}
+                content={<div>{props.comment.text} </div>}
 
-                    </div>
-                }
+
                 datetime={
                     <Tooltip title={moment().format('YYYY-MM-DD HH:mm')}>
                         <span>{moment().fromNow('YYYY-MM-DD T12:HH:mm')}</span>
                     </Tooltip>
                 }
+
             />
-
-
             {OpenReply &&
-                <div style={{ width: '100%'}}>
-                    <Form style={{ margin: '1rem ' }} onSubmit = {onSubmitHandler}>
+                <div style={{ width: '100%' }}>
+                    <Form style={{ margin: '1rem ' }} onSubmit={onSubmitHandler}>
                         <Form.Item>
                             <TextArea rows={3} onChange={onChangeHandler} value={Text} placeholder="댓글을입력해주세요" />
                         </Form.Item>
