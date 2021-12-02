@@ -14,7 +14,7 @@ function SingleComment(props) {
         text: Text,
         userFrom: localStorage.getItem('userId'),
         movieId: props.comment.movieId,
-        responseTo: props.comment.responseTo
+        responseTo: props.comment._id
     }
 
     const onSubmitHandler = (e) => {
@@ -49,7 +49,7 @@ function SingleComment(props) {
     }
 
     const actions = [
-        <span onClick={onClickReplyOpen} key="comment-basic-reply-to" style={{ margin: "0", padding: '0' }}>Replay</span>
+        <span onClick={onClickReplyOpen}  style={{ margin: '0', padding: '0' }}>Replay</span>
     ]
 
     const onChangeHandler = (e) => {
@@ -58,7 +58,7 @@ function SingleComment(props) {
 
     return (
         <div>
-            <Comment 
+            <Comment style={{marginLeft:'1rem', padding:0}}
                 author={<p>{props.comment.name}</p>}
                 actions={actions}
                 avatar={<Avatar src="https://picsum.photos/200/200"/>}
@@ -73,12 +73,12 @@ function SingleComment(props) {
 
             />
             {OpenReply &&
-                <div style={{ width: '100%' }}>
+                <div style={{ width: '85%', marginLeft:'2rem'}}>
                     <Form style={{ margin: '1rem ' }} onSubmit={onSubmitHandler}>
                         <Form.Item>
                             <TextArea rows={3} onChange={onChangeHandler} value={Text} placeholder="댓글을입력해주세요" />
-                        </Form.Item>
-                        <Form.Item>
+                        {/* </Form.Item>
+                        <Form.Item> */}
                             <Button onClick={onSubmitHandler} type="primary">
                                 Add Comment
                             </Button>

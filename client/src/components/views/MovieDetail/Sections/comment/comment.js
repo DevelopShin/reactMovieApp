@@ -2,9 +2,8 @@ import React, { createElement, useState, useEffect } from 'react';
 import { Comment, Tooltip, Avatar, Form, Button, Input, TextArea } from 'antd';
 import Axios from 'axios'
 import moment from 'moment';
-// import CommentBoard from './CommentBoard';
 import SingleComment from './SingleComment.js';
-
+import ReplyComment from './ReplyComment.js';
 const userFrom = localStorage.getItem('userId')
 
 function ChatCom(props) {
@@ -73,10 +72,13 @@ function ChatCom(props) {
 
             <div style={{ width: "100%", borderBottom: "1px solid #f0f0f1", minHeight: '100px' }}>
                 {TextList && TextList.map((comment, index) => (
+                    (!comment.responseTo &&
                         <React.Fragment key={index}>
                             {/* <CommentBoard comment={comment.text} commentInfo={comment} /> */}
-                            <SingleComment comment={comment} fetchComment={fetchComment}/>
+                            <SingleComment comment={comment} fetchComment={fetchComment} movieId= {props.movieId}/>
+                            <ReplyComment comment={TextList} parentComment = {comment} fetchComment={fetchComment} movieId= {props.movieId}/>
                         </React.Fragment>
+                        )
                     
                 ))}
 
