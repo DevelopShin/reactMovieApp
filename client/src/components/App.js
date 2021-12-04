@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch,BrowserRouter as Router } from "react-router-dom";
 import Auth from "../hoc/auth";
 // pages for this product
 import LandingPage from "./views/LandingPage/LandingPage.js";
@@ -10,13 +10,14 @@ import Footer from "./views/Footer/Footer"
 import MovieDetail from './views/MovieDetail/MovieDetail';
 import FavoritePage from './views/FavoriteList/FavoritePage'
 // import ChatCom from './views/MovieDetail/Sections/comment/comment'
-
+// // use Auth
 //null   Anyone Can go inside
 //true   only logged in user can go inside
 //false  logged in user can't go inside
 
 function App() {
   return (
+      <Router>
     <Suspense fallback={(<div>Loading...</div>)}>
       <NavBar />
       <div style={{ paddingTop: '69px', minHeight: 'calc(100vh - 80px)' }}>
@@ -28,12 +29,11 @@ function App() {
           <Route exact path="/favoriteList" component={Auth(FavoritePage, true)} />
           {/* <Route exact path="/chatcom" component={Auth(ChatCom, null)} /> */}
 
-
-
         </Switch>
       </div>
       <Footer />
     </Suspense>
+    </Router>
   );
 }
 
