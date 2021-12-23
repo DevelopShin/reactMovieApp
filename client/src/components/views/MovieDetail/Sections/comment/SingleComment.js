@@ -49,8 +49,10 @@ function SingleComment(props) {
     }
 
     const actions = [
+
         <span onClick={onClickReplyOpen}  style={{ margin: '0', padding: '0' }}>Replay</span>
-    ]
+
+      ]
 
     const onChangeHandler = (e) => {
         setText(e.target.value)

@@ -42,7 +42,7 @@ function ReplyComment(props) {
         <div>
             {ChildCommentNum > 0 &&
                 <p style={{ fontSize: '12px', margin: 0, color: 'gray', marginTop:0 , marginLeft:'3rem',cursor: "pointer"}} onClick={onClickHandler}>
-                    view <h5 style={{display:'inline'}}>{ChildCommentNum}</h5> more comment(s)
+                    view <p style={{display:'inline'}}>{ChildCommentNum}</p> more comment(s)
                 </p>
             }
         

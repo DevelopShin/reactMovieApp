@@ -20,8 +20,8 @@ const connect = mongoose.connect(config.mongoURI,
     useNewUrlParser: true, useUnifiedTopology: true,
     useCreateIndex: true, useFindAndModify: false
   })
-  .then(() => console.log('MongoDB Connected...'))
-  .catch(err => console.log(err));
+  .then(() => console.log('DB CT Success: MongoDB Connected...'))
+  .catch(err => console.log('DB err=>>> : ',err));
 
 app.use(cors())
 

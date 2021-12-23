@@ -86,8 +86,6 @@ router.post('/remove', (req, res) => {
 
 router.post('/favoritelist', (req, res) => {
     const userFrom = req.body.userFrom
-    console.log(userFrom)
-
 
     // DB에서 죻아요 숫자 가져오기
     Favorite.find({ "userFrom": userFrom })

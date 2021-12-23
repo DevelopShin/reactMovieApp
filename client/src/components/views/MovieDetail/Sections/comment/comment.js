@@ -22,7 +22,7 @@ function ChatCom(props) {
     }, [])
 
 
-    const fetchComment = () => { //포스트에 대한 모든 댓글 블러오기
+    const fetchComment =() => { //포스트에 대한 모든 댓글 블러오기
         Axios.post('/api/comment/loadcomment', { movieId: props.movieId })
             .then(req => {
                 if (req.data.success) {

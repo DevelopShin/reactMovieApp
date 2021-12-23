@@ -18,6 +18,9 @@
   font-size: 20px;
   padding: 19px 20px;
 }
+.nameP {
+  margin: 0;
+}
 
 .menu__container .ant-menu-item {
   padding: 0px 5px;
